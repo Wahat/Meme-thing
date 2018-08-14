@@ -1,14 +1,11 @@
 import requests
 import json
-<<<<<<< HEAD
 from selenium import webdriver
 import time
 
 USER = ""
 PASS = ""
 CHAT = ''
-=======
->>>>>>> parent of 5329a2e... Added chat functionality
 
 r = requests.get('https://www.reddit.com/r/dankmemes/top/.json?sort=top&t=day', headers = {'User-agent': 'Chrome'})
 
@@ -16,7 +13,7 @@ theJSON = json.loads(r.text)
 links = []
 for i in range (1, 20):
     link = theJSON["data"]["children"][i]["data"]["preview"]["images"][0]["source"]["url"]
-    print(link)
+    #print(link)
     links.append(link)
 
 i = "meme"
@@ -28,7 +25,6 @@ for link in links:
     response = requests.get(link)
     if response.status_code == 200:
         with open(name, 'wb') as f:
-<<<<<<< HEAD
             f.write(response.content)
 
 chrome_options = webdriver.ChromeOptions()
@@ -44,7 +40,7 @@ browser.find_element_by_id("pass").send_keys(PASS)
 
 login = browser.find_element_by_id("loginbutton").click()
 
-imageinp = browser.find_element_by_class_name("_260t").send_keys("path/to/meme")
+imageinp = browser.find_element_by_class_name("_260t").send_keys("/path/to/meme")
 buttons = browser.find_element_by_class_name("_5rpb")
 sender = browser.find_element_by_class_name("notranslate")
 print(type(sender))
@@ -59,6 +55,3 @@ while ((end-start) < 5):
 
 
 browser.close()
-=======
-            f.write(response.content)
->>>>>>> parent of 5329a2e... Added chat functionality
