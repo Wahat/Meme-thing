@@ -1,10 +1,11 @@
 import requests
 import json
 from selenium import webdriver
+import time
 
 USER = ""
 PASS = ""
-CHAT = 'https://www.facebook.com/messages/t/1897608526968693'
+CHAT = ''
 
 r = requests.get('https://www.reddit.com/r/dankmemes/top/.json?sort=top&t=day', headers = {'User-agent': 'Chrome'})
 
@@ -39,13 +40,18 @@ browser.find_element_by_id("pass").send_keys(PASS)
 
 login = browser.find_element_by_id("loginbutton").click()
 
-imageinp = browser.find_element_by_name("attachment[]").send_keys("/Users/kohilanmohanarajan/Documents/GitHub/Meme-thing/meme1.jpeg")
+imageinp = browser.find_element_by_class_name("_260t").send_keys("path/to/meme")
 buttons = browser.find_element_by_class_name("_5rpb")
 sender = browser.find_element_by_class_name("notranslate")
 print(type(sender))
 sender.send_keys(u'\ue007')
 
+start = time.time()
+
+end = time.time()
+while ((end-start) < 5):
+    end = time.time()
 
 
 
-#browser.close()
+browser.close()
